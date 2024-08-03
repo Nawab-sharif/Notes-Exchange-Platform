@@ -1,0 +1,1 @@
+exports.SECRET = "This_is_my_secret_key"

@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS RESET */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Urbanist, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/*? base style */
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+/* Create CSS variables */
+:root {
+  /* --black: rgba(6, 6, 6, 0.821); */
+  /* --lightgreen: #63d38c; */
+  /* --lightPurple: #911967; */
+  /* --lightBlue: #0e488f; */
+  --primary:#5b7fe2;
+  --secondry:#b5d1f1b7;
+  --accent:#FBBF24;
+  --bgColor:#d0d2d6;
+  --textPrimary:#1F2937;
+  --textSecondry:#787b82bf;
+}
+
+/* For Button CSS */
+.btn {
+  height: 50px;
+  width: 110px;
+  font-weight: bold;
+  color: var(--textPrimary);
+  background-color: var(--accent);
+  font-size: 1.1rem;
+  /* border: 2px solid var(--textPrimary); */
+  box-shadow: 2px 2px 4px var(--textSecondry);
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: none;
+  transform: scale(1.1);
+}
+
+
+/* Home Page CSS */
+.home-page {
+  background: url("./assets/home2.png");
+  background-repeat: round;
+  
+}
+
+/* Notes page CSS */
+.cardPdf,.notesCard {
+  /* box-shadow: inset 5px 5px 3px var(--accent), inset -5px -5px 3px var(--accent); */
+}
+
+/* Login register  Page CSS */
+
+.form {
+  box-shadow: inset 2px 2px 10px var(--accent), inset -2px -2px 10px var(--accent);
+}
+
+
+/* Home Page CSS */
+.admin-home {
+  background: url("./assets/adminDashboard.jpg");
+  background-repeat: round;
+  
+}
