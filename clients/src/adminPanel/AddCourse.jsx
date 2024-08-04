@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useAxios } from '../hook/useAxios';
+import { toast } from 'react-toastify';
 
 const AddCourse = () => {
-    let [course,setCourse] = useState({title:''})
-    let navigate = useNavigate();
+    const [course,setCourse] = useState({title:''})
+    const navigate = useNavigate();
+    const axios = useAxios();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(course)
-        let result = await axios.post('http://127.0.0.1:3002/api/course', course)
-        alert(result.data.msg);
+        let result = await axios.post('/api/course', course)
+        toast(result.data.msg);
         navigate('/admin/courses')
     }
 

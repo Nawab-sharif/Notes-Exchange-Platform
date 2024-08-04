@@ -13,19 +13,21 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import NotesPdf from './pages/NotesPdf.jsx';
 import NotesText from './pages/NotesText.jsx';
+import UploadNotes from './pages/UploadNotes.jsx';
 import Error from './pages/Error.jsx';
 import AdminLayout from './AdminLayout.jsx';
-import AdminDashboard from './adminPanel/AdminDashboard.jsx';
 import AdminLogin from './adminPanel/AdminLogin.jsx';
+import AdminDashboard from './adminPanel/AdminDashboard.jsx';
 import AdminUsers from './adminPanel/Users.jsx';
 import AdminContact from './adminPanel/Contact.jsx';
 import AdminNotes from './adminPanel/Notes.jsx';
 import AdminRequests from './adminPanel/Request.jsx';
 import AdminContextProvider from './Context/AdminContextProvider.jsx';
-import UploadNotes from './pages/UploadNotes.jsx';
 import AddCourse from './adminPanel/AddCourse.jsx';
 import Courses from './adminPanel/Courses.jsx';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let router = createBrowserRouter(
   createRoutesFromElements(
@@ -60,5 +62,19 @@ let router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <ToastContainer
+      position="top-right"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+      transition:Bounce
+      bodyClassName="toastBody"
+    />
   </React.StrictMode>,
 )

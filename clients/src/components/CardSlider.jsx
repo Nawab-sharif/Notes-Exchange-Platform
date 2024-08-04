@@ -5,15 +5,6 @@ import { useGSAP } from '@gsap/react';
 import { Link } from 'react-router-dom';
 
 const CardSlider = () => {
-    const gsapRef = useRef();
-    useGSAP(() => {
-        // gsap.from(gsapRef.current, {
-        //     opacity: 0,
-        //     x: 90,
-        //     duration: 2,
-        //     repeat: -1,
-        // })
-    })
     const cardData = [
         {
             id: 1,
@@ -38,7 +29,7 @@ const CardSlider = () => {
     ]
     return (
         <section className='w-full p-10 bg-bgColor '>
-            <div ref={gsapRef} className="cards flex justify-around">
+            <div className="cards flex justify-around">
                 {
                     cardData.map((key) => {
                         return <div className=" cardPdf h-[350px] w-[300px] flex flex-col items-center justify-evenly p-[1%] mb-[2%] bg-secondry rounded-[5%] hover:shadow-none hover:scale-105">

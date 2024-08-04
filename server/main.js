@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
@@ -7,7 +8,6 @@ const PORT = 3002;
 // Middleware
 app.use(express.json());
 app.use(cors());
-
 
 //Require and Mount the router To use 
 const Route = require('./router/router')

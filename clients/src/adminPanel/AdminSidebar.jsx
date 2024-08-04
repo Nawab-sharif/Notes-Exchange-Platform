@@ -33,7 +33,6 @@ export function AdminSidebar() {
                     <div className="space-y-3 pt-[20%]">
                         <label className="px-3 text-lg font-bold uppercase text-primary">Admin Dashboard</label>
                         {menuItems.map((item) => (
-
                             <li className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-accent"> <span className="mx-2 text-lg font-medium"><Link to={item.to}>{item.name}</Link></span></li>
                         ))}
 

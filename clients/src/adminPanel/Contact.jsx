@@ -1,10 +1,11 @@
 import React ,{useState , useEffect} from 'react';
-import axios from 'axios';
+import { useAxios } from '../hook/useAxios';
 
 export default function Contact() {
-    let [data, setData] = useState([])
+    const [data, setData] = useState([]);
+    const axios = useAxios();
     async function getData() {
-        let result = await axios.get('http://localhost:3002/api/contact')
+        let result = await axios.get('/api/contact')
         setData(result.data.msg)
     }
     useEffect(() => {
@@ -16,7 +17,7 @@ export default function Contact() {
         let flag  =  confirm("Are U sure to delete")
         console.log(id)
         if(flag == true){
-         await axios.delete(`http://localhost:3002/api/contact/${id}`)
+         await axios.delete(`/api/contact/${id}`)
          getData()
         }
     }

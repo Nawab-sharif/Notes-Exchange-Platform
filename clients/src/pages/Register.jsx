@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link , useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useAxios } from '../hook/useAxios';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const [user, setUser] = useState({ role:'', name:'', email:'', contact:'', password:'', })
-    let navigate = useNavigate();
+    const navigate = useNavigate();
+    const axios = useAxios();
 
     const handleInput = (e) => {
         // console.log(e);
@@ -19,8 +21,8 @@ const Register = () => {
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
-        let result = await axios.post('http://127.0.0.1:3002/api/register',user)
-        alert(result.data.msg)
+        let result = await axios.post('/api/register',user)
+        toast(result.data.msg)
         navigate('/login')
     }
 
@@ -33,7 +35,6 @@ const Register = () => {
                     <p className="mt-2 text-base text-gray-600 mb-2 text-center"> Already have an account? <Link to='/login' className="font-bold text-black/60 transition-all duration-200 hover:underline">Login</Link></p>
                     <select
                         name="role"
-                        id="register"
                         value={user.role}
                         onChange={handleInput}
                         className='h-[10%] text-black rounded'>

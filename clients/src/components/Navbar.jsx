@@ -96,9 +96,9 @@ export default function Navbar() {
                 {isLogin ?
                   <>
                     <Link to='/uploadnotes'>
-                      <button type="button" className="mt-4 w-full rounded-md bg-secondry text-primary px-3 py-2 text-sm font-semibold shadow-sm hover:bg-accent hover:text-textPrimary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Log In</button>
+                      <button type="button" className="mt-4 w-full rounded-md bg-secondry text-primary px-3 py-2 text-sm font-semibold shadow-sm hover:bg-accent hover:text-textPrimary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Uploads Notes</button>
                     </Link>
-                    <button type="button" className="mt-4 w-full rounded-md bg-accent text-textPrimary px-3 py-2 text-sm font-semibold shadow-sm hover:bg-secondry hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Register</button>
+                    <button type="button" onClick={handleLogout} className="mt-4 w-full rounded-md bg-accent text-textPrimary px-3 py-2 text-sm font-semibold shadow-sm hover:bg-secondry hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Logout</button>
                   </>
                   :
                   <>

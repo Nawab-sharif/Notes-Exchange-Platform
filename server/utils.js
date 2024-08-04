@@ -5,8 +5,8 @@ const streamifier = require('streamifier');
 // Configuration
 cloudinary.config({
     cloud_name: 'doluvumlx',
-    api_key: '488891386461574',
-    api_secret: 'bZJE_wtvwi3g7tsnVIEhhAYtwB0'
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
 });
 
 exports.uploadFile = async (file) => {
@@ -20,7 +20,6 @@ exports.uploadFile = async (file) => {
                 resolve(result)
             }
         );
-
         streamifier.createReadStream(file).pipe(stream);
     })
 

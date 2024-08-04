@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useAxios } from '../hook/useAxios';
 
 export default function Users() {
-    let [data, setData] = useState([])
+    const [data, setData] = useState([]);
+    const axios = useAxios()
+
     async function getData() {
-        let result = await axios.get('http://localhost:3002/api/user')
+        let result = await axios.get('/api/user')
         setData(result.data.msg)
     }
     useEffect(() => {
@@ -17,7 +19,16 @@ export default function Users() {
         let flag  =  confirm("Are U sure to delete")
         console.log(id)
         if(flag == true){
-         await axios.delete(`http://localhost:3002/api/user/${id}`)
+         await axios.delete(`/api/user/${id}`)
+         getData()
+        }
+    }
+
+    async function makeAdmin(id){
+        let flag  =  confirm("Are U sure")
+        // console.log(id)
+        if(flag == true){
+         await axios.put(`/api/user/${id}`)
          getData()
         }
     }
@@ -68,6 +79,7 @@ export default function Users() {
                                                 </td>
 
                                                 <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
+                                                    <button type="button" onClick={()=>{makeAdmin(user._id)}} className="rounded-md bg-blue-600 mx-4 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">{user.isAdmin ? 'Remove Admin' : 'Make Admin'}</button>
                                                     <button type="button" onClick={()=>{deleteData(user._id)}} className="rounded-md bg-red-600 mx-4 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Delete</button>
                                                 </td>
                                             </tr>

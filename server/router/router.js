@@ -12,7 +12,9 @@ router.route('/register').post(controllers.register)
 router.route('/login').post(controllers.login)
 
 router.route('/user').get(controllers.getUser)
-router.route('/user/:id').delete(controllers.deleteUser)
+router.route('/user/:id')
+    .delete(controllers.deleteUser)
+    .put(controllers.updateUser)
 
 router.route('/contact')
     .post(controllers.contactForm)
@@ -24,6 +26,11 @@ router.route('/course')
     .get(controllers.getCourses)
 router.route('/course/:id').delete(controllers.deleteCourse)
 
-router.route('/notes').post(verifyToken, upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'view', maxCount: 1 }]), notesControllers.addNotes)
+router.route('/notes')
+    .post(verifyToken, upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'view', maxCount: 1 }]), notesControllers.addNotes)
+    .get(notesControllers.getNotes);
+router.route('/notes/:id')
+    .delete(notesControllers.deleteNotes)
+    .put(notesControllers.updateNotes)
 
 module.exports = router;

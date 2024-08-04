@@ -57,11 +57,6 @@ body {
   
 }
 
-/* Notes page CSS */
-.cardPdf,.notesCard {
-  /* box-shadow: inset 5px 5px 3px var(--accent), inset -5px -5px 3px var(--accent); */
-}
-
 /* Login register  Page CSS */
 
 .form {
@@ -69,9 +64,16 @@ body {
 }
 
 
-/* Home Page CSS */
+/* Admin Home Page CSS */
 .admin-home {
   background: url("./assets/adminDashboard.jpg");
   background-repeat: round;
-  
+}
+
+/*  react toastify  CSS */
+
+.toastBody {
+  font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
 }

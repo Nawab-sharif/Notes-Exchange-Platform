@@ -16,8 +16,6 @@ export default function AdminContextProvider({ children }) {
     }
   }, [])
 
-
-
   return (
     <div>
       <AdminContext.Provider value={{adminToken, setAdminToken}}>

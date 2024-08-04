@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useAxios } from '../hook/useAxios';
 
 export default function Courses() {
-    let [data, setData] = useState([])
+    const [data, setData] = useState([]);
+    const axios  = useAxios();
     async function getData() {
         let result = await axios.get('http://localhost:3002/api/course')
-        setData(result.data.msg)
+        setData(result.data.courses)
     }
     useEffect(() => {
         getData()
@@ -16,7 +17,7 @@ export default function Courses() {
         let flag = confirm("Are U sure to delete")
         console.log(id)
         if(flag == true){
-         await axios.delete(`http://localhost:3002/api/course/${id}`)
+         await axios.delete(`/api/course/${id}`)
          getData()
         }
     }

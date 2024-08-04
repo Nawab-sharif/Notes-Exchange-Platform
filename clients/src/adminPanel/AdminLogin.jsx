@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link , useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAdminContext } from '../Context/AdminContextProvider';
+import { useAxios } from '../hook/useAxios';
+import { toast } from 'react-toastify';
 
 const AdminLogin = () => {
-  const [user, setUser] = useState({  email: '', password: '', })
-  const {setAdminToken} = useAdminContext()
+  const [user, setUser] = useState({ email: '', password: '', })
+  const { setAdminToken } = useAdminContext();
+  const axios = useAxios();
   let navigate = useNavigate();
 
   const handleInput = (e) => {
@@ -18,19 +20,27 @@ const AdminLogin = () => {
     });
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let result = await axios.post('http://127.0.0.1:3002/api/login',user)
-    if(result.data.user.isAdmin){
-      localStorage.setItem('admin-token',result.data.token)
-      setAdminToken?.(result.data.token)
-      alert(result.data.msg);
-      navigate('/admin/user')
+    console.log(user)
+    let result = await axios.post('/api/login', user)
+    // console.log(result.data)
+    if (!result.data.token) {
+      toast.error(result.data.msg);
+    } else {
+      if (result.data.user.isAdmin) {
+        localStorage.setItem('admin-token', result.data.token)
+        setAdminToken?.(result.data.token)
+        toast.success(result.data.msg);
+        navigate('/admin/user')
+      }
+      else {
+        toast.error("Only admins are allowed")
+        navigate('/')
+      }
     }
-    else{
-      alert("Only admins are allowed")
-      navigate('/')
-    }
+
+
   }
 
   return (
@@ -39,7 +49,7 @@ const AdminLogin = () => {
         <form method='post' onSubmit={handleSubmit} className='h-full w-full flex flex-col justify-evenly pb-4'>
           <h1 className='text-2xl text-primary text-center font-bold w-[35%] border-b-4 border-accent rounded relative left-[30%]'>Login</h1>
           <input
-            type="text"
+            type="email"
             name="email"
             id="email"
             required

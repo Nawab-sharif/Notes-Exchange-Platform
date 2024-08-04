@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import contact from '../assets/contact.jpg';
-import axios from 'axios';
+import { useAxios } from '../hook/useAxios';
+import { toast } from 'react-toastify';
 
 const Contact = () => {
-  const [user, setUser] = useState({ name: '', contact: '', email: '', message: '' })
+  const [user, setUser] = useState({ name: '', contact: '', email: '', message: '' });
+  const axios = useAxios();
 
   const handleInput = (e) => {
     // console.log(e);
@@ -18,8 +20,8 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let result = await axios.post('http://127.0.0.1:3002/api/contact', user)
-    alert(result.data.msg)
+    let result = await axios.post('/api/contact', user)
+    toast(result.data.msg)
     setUser({ name: '', contact: '', email: '', message: '' })
   }
 

@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useAxios } from '../hook/useAxios';
 
 export default function Notes() {
-    let [data, setData] = useState([])
-    async function getData() {
-        // let result = await axios.get('http://localhost:3002/api/getData')
-        // setData(result.data)
+    const [data, setData] = useState([]);
+    const axios = useAxios();
+
+    async function getNotes() {
+        const result = await axios.get('/api/notes?approved=true')
+        console.log(result.data)
+        setData(result.data.notes)
     }
     useEffect(() => {
-        getData()
+        getNotes()
     }, [])
 
-    async function deleteData(id){
-        let flag  =  confirm("Are U sure to delete")
-        // console.log(flag)
-        // if(flag == true){
-        //  await axios.delete(`http://localhost:4000/api/productDelete/${id}`)
-        //  getData()
-        // }
+    async function deleteData(id) {
+        let flag = confirm("Are U sure to delete")
+        if (flag == true) {
+            await axios.delete(`/api/notes/${id}`)
+            getNotes()
+        }
     }
 
     return (
@@ -46,36 +48,31 @@ export default function Notes() {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200 bg-white">
-                                        {/* {data.map((user) => ( */}
+                                        {data.map((notes) => (
                                             <tr>
                                                 <td className="whitespace-nowrap px-4 py-4">
                                                     <div className="flex items-center">
                                                         <div className="ml-4">
-                                                        BCA
-                                                            {/* <div className="text-sm font-medium text-gray-900">{product.productName}</div> */}
+                                                            <div className="text-sm font-medium text-gray-900">{notes.course.title}</div>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td className="whitespace-nowrap px-12 py-4">
-                                                    <div className="text-sm text-gray-900 ">React</div>
+                                                    <div className="text-sm text-gray-900 ">{notes.title}</div>
+                                                </td>
+                                                <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">{notes.price}</td>
+                                                <td className="whitespace-nowrap px-4 py-4">
+                                                    <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800"><a href={notes.previewUrl} target='_blank'>Preview</a></span>
                                                 </td>
                                                 <td className="whitespace-nowrap px-4 py-4">
-                                                    <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
-                                                        Rs. 49
-                                                    </span>
-                                                </td>
-                                                <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
-                                                    link1
-                                                </td>
-                                                <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
-                                                    link2
+                                                    <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800"><a href={notes.viewUrl} target='_blank'>Click here</a></span>
                                                 </td>
 
                                                 <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
-                                                    <button type="button" onClick={()=>{deleteData()}} className="rounded-md bg-red-600 mx-4 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Delete</button>
+                                                    <button type="button" onClick={() => { deleteData(notes._id) }} className="rounded-md bg-red-600 mx-4 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Delete</button>
                                                 </td>
                                             </tr>
-                                        {/* ))} */}
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>

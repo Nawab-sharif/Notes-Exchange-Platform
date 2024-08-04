@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link , useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useAxios } from '../hook/useAxios';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [user, setUser] = useState({  email: '', password: '', })
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const axios = useAxios();
 
   const handleInput = (e) => {
     // console.log(e);
@@ -16,13 +18,16 @@ const Login = () => {
     });
   };
 
+
   const handleSubmit = async(e) => {
     e.preventDefault()
-    let result = await axios.post('http://127.0.0.1:3002/api/login',user)
-    localStorage.setItem('user-token',result.data.token);
-    alert(result.data.msg);
+    let result = await axios.post('/api/login',user)
     console.log(result.data)
-    navigate('/')
+    toast(result.data.msg);
+    if(result.data.token){
+      localStorage.setItem('user-token',result.data.token);
+      navigate('/')
+    }
   }
 
   return (
@@ -37,7 +42,7 @@ const Login = () => {
           <p className="mt-2 text-base text-gray-600 text-center"> Don't have an account? <Link  to='/register' className="font-bold text-black/60 transition-all duration-200 hover:underline">Create an account</Link></p>
           <label htmlFor="uName">E-mail:</label>
           <input
-            type="text"
+            type="email"
             name="email"
             id="email"
             required

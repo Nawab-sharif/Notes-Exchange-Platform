@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema, model } = require('mongoose');
 const jwt = require('jsonwebtoken');
-const { SECRET } = require('../config');
 
 
 // This is a blue print of your registration input fields
@@ -46,7 +45,7 @@ userSchema.methods.generateToken = function () {
             isAdmin: this.isAdmin,
 
         },
-            SECRET, { expiresIn: "30d" }
+            process.env.SECRET_KEY, { expiresIn: "30d" }
         );
     } catch (error) {
         console.error(error)
