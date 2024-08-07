@@ -32,7 +32,7 @@ const AdminLogin = () => {
         localStorage.setItem('admin-token', result.data.token)
         setAdminToken?.(result.data.token)
         toast.success(result.data.msg);
-        navigate('/admin/user')
+        navigate('/admin')
       }
       else {
         toast.error("Only admins are allowed")

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import {data} from './data';
 import UserContext from '../../Context/UserContext';
+import { toast } from 'react-toastify';
 
 export function Sidebar() {
   let {index} = useContext(UserContext);
@@ -10,7 +11,7 @@ export function Sidebar() {
 
   const handleClick = (value) =>{
     if(index == 'HTML') setContent(value);
-    else alert('Data not available Now')
+    else toast('Data not available Now')
     
   }
   return (

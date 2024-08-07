@@ -12,7 +12,7 @@ exports.register = async (req, res) => {
         const { role, name, email, contact, password } = req.body;
         const userExist = await User.findOne({ email: email });
         if (userExist) {
-            return res.status(400).json({ msg: "Email already exists" })
+            return res.status(200).json({ msg: "Email already exists" })
         }
         const userCreated = await User.create({ role, name, email, contact, password });
         return res.status(200).json({ msg: "Registration Successfull", });
@@ -109,9 +109,9 @@ exports.contactForm = async (req, res) => {
         const { name, contact, email, message } = req.body;
         // console.log(req.body);
         await Contact.create({ name, contact, email, message });
-        return res.status(200).json({ message: "Message send successfully" })
+        return res.status(200).json({ msg: "Message send successfully" })
     } catch (error) {
-        return res.status(200).json({ message: "Message not delivered" })
+        return res.status(200).json({ msg: "Message not delivered" })
     }
 
 };

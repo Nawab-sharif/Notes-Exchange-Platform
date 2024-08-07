@@ -1,7 +1,8 @@
 import React from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import noteslogo from '../assets/notes2.png'
+import { toast } from 'react-toastify';
 
 const menuItems = [
   { name: 'Home', href: '/', },
@@ -21,36 +22,58 @@ export default function Navbar() {
 
   function handleLogout() {
     localStorage.removeItem('user-token');
+    localStorage.removeItem('role');
     navigate('/login');
   }
 
+  function handleUpload() {
+    let token = localStorage.getItem('user-token')
+    if (token) {
+      let role = localStorage.getItem('role')
+      if (role == 'Service Provider') {
+        navigate('/uploadnotes');
+      } else {
+        toast.error("Only service provider can upload!")
+      }
+    } else {
+      toast.error("Kindly login first!")
+      navigate('/login');
+    }
+  }
+
+  // Set Active Menu 
+  const location = useLocation();
+  const getLinkClass = (path) =>{
+    return location.pathname === path ? 'text-lg font-semibold  text-accent border-b-4 border-accent  rounded' : ' text-lg font-semibold rounded';
+  };
+
   return (
-    <div className="fixed w-full h-[10vh] bg-primary z-[999] text-white">
+    <div className="navbar fixed w-full h-[10vh] bg-primary z-[999] text-white">
       <div className="mx-auto h-[100%] flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         {/* Logo */}
         <div className="inline-flex items-center space-x-2">
           <span >
-            <img src={noteslogo} alt="logo" className='h-[60px] w-[65px]' />
+            <img src={noteslogo} alt="logo" className='logo h-[60px] w-[65px]' />
           </span>
-          <Link to='/' className="font-bold text-2xl hover:text-accent">Notes Exchange  Platform</Link>
+          <Link to='/' className="title font-bold text-2xl hover:text-accent">Notes Exchange  Platform</Link>
         </div>
 
         {/* For Menu Items */}
         <div className="hidden lg:block">
           <ul className="inline-flex space-x-8">
             {menuItems.map((item) => (
-              <li key={item.name}><Link to={item.href} className="text-lg font-semibold hover:text-accent hover:border-b-4 border-accent rounded">{item.name}</Link></li>
+              <li key={item.name}><Link to={item.href} className={getLinkClass(item.href)} 
+              // className=" text-lg font-semibold  hover:text-accent hover:border-b-4 border-accent  rounded"
+              >{item.name}</Link></li>
             ))}
           </ul>
         </div>
 
         {/* Hire Me Button */}
         <div className="hidden lg:block">
+          <button type="button" onClick={handleUpload} className="text-primary bg-bgColor rounded-md mr-4 px-2 py-1 text-lg font-semibold shadow-sm hover:bg-[] hover:text-textPrimary hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Upload Notes</button>
           {isLogin ?
             <>
-              <Link to='/uploadnotes'>
-                <button type="button" className="text-primary bg-bgColor rounded-md mr-4 px-2 py-1 text-lg font-semibold shadow-sm hover:bg-[] hover:text-textPrimary hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Upload Notes</button>
-              </Link>
               <button type="button" onClick={handleLogout} className="text-primary bg-bgColor rounded-md mr-4 px-2 py-1 text-lg font-semibold shadow-sm hover:bg-[] hover:text-textPrimary hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Log Out</button>
             </>
             :
@@ -93,11 +116,9 @@ export default function Navbar() {
                     ))}
                   </nav>
                 </div>
+                <button type="button" onClick={handleUpload} className="mt-4 w-full rounded-md bg-secondry text-primary px-3 py-2 text-sm font-semibold shadow-sm hover:bg-accent hover:text-textPrimary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Uploads Notes</button>
                 {isLogin ?
                   <>
-                    <Link to='/uploadnotes'>
-                      <button type="button" className="mt-4 w-full rounded-md bg-secondry text-primary px-3 py-2 text-sm font-semibold shadow-sm hover:bg-accent hover:text-textPrimary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Uploads Notes</button>
-                    </Link>
                     <button type="button" onClick={handleLogout} className="mt-4 w-full rounded-md bg-accent text-textPrimary px-3 py-2 text-sm font-semibold shadow-sm hover:bg-secondry hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Logout</button>
                   </>
                   :

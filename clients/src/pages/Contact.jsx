@@ -21,6 +21,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     let result = await axios.post('/api/contact', user)
+    console.log(result.data)
     toast(result.data.msg)
     setUser({ name: '', contact: '', email: '', message: '' })
   }

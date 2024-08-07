@@ -22,6 +22,7 @@ const Register = () => {
     const handleSubmit = async (e)=>{
         e.preventDefault()
         let result = await axios.post('/api/register',user)
+        console.log(result.data)
         toast(result.data.msg)
         navigate('/login')
     }
@@ -29,7 +30,7 @@ const Register = () => {
 
     return (
         <div className='signup h-[100vh] max-w-full bg-bgColor flex items-center justify-around flex-wrap'>
-            <div className="form relative bg-secondry h-[70%] w-[30%] mt-[5%] ml-[5%] px-[2%] pt-[1%] pb-[5%] text-textPrimary rounded-[5%]">
+            <div className="form relative bg-secondry h-[70%] w-[30%] mt-[5%] ml-[5%] px-[2%] pt-[1%] pb-[5%] text-textPrimary rounded-[5%] flex flex-wrap">
                 <form method='post' onSubmit={handleSubmit}  className='h-full w-full flex flex-col justify-evenly pb-4'>
                     <h2 className='text-2xl text-primary text-center font-bold w-[30%]  border-b-4 border-accent rounded  relative left-[35%]'>Sign Up</h2>
                     <p className="mt-2 text-base text-gray-600 mb-2 text-center"> Already have an account? <Link to='/login' className="font-bold text-black/60 transition-all duration-200 hover:underline">Login</Link></p>

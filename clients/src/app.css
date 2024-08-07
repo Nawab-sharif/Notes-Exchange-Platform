@@ -1,0 +1,58 @@
+
+/* CSS for responsive */
+
+/* --------------------------- */
+/* -- Mobile CSS start here --*/
+/* --------------------------- */
+
+@media (max-width:450px){
+    .navbar .title{
+        font-size: large;
+    }
+    .navbar .logo{
+        height: 40px;
+        width: 40px;
+    }
+
+    .home-page{
+        .content{
+            width: 90%;
+            top: 8%;
+            left: 4%;
+            h1{
+                font-size: x-large;
+            }
+            p , div span{
+                font-size: large;
+            }
+            .box{
+                width: 90%;
+            }
+            .btn{
+                height: 40px;
+                width: 90px;
+                font-size: 0.9rem;
+            }
+
+        }
+        .rightcontent{
+            width: 70%;
+            height: 12%;
+            left: 30%;
+            font-size: large;
+            span{
+                display: none;
+            }
+        }
+    }
+
+    .login{
+        
+    }
+
+    .footer{
+        .foot{
+            justify-content: center;
+        }
+    }
+}
