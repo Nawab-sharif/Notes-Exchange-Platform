@@ -26,7 +26,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="mx-auto my-4 max-w-6xl flex items-start justify-between flex-wrap space-x-8 md:flex-row">
+            <div className="mx-auto my-4 max-w-6xl flex items-start justify-between space-x-8 md:flex-row">
                 <div className="w-full px-4 md:w-1/2 lg:px-0">
                     <h1 className="max-w-sm text-3xl font-bold">Subscribe to our Newsletter</h1>
                     <form action="" className="mt-4 inline-flex w-full items-center md:w-3/4">

@@ -18,7 +18,7 @@ const Notes = () => {
       icon: <i class="ri-file-pdf-2-line"></i>,
       head: 'PDF Format',
       para: 'We provide the notes in PDF format',
-      href: '/notes-pdf'
+      href: '/notespdf'
     },
     {
       icon: <i class="ri-file-text-fill"></i>,
@@ -30,7 +30,7 @@ const Notes = () => {
       icon: <i class="ri-mic-line"></i>,
       head: 'Voice Recorded',
       para: 'We also provide the voice recorded notes',
-      href: '/'
+      href: '/notesaudio'
     },
   ]
 

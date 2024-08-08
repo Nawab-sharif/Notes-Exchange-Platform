@@ -25,7 +25,7 @@ const Home = () => {
         <p className='text-[1.3rem] text-white my-[2%]'>We provide a notes for anyone who intrested in this. our material which is absolutly  correct  and efficient for everyone. We provide the best content of the topic which is easy to understand for everyone.</p>
         <div className='text-[1.3rem] text-white my-1'><span className='text-[2rem] text-accent mr-[0.8rem]'><i class="ri-home-office-line"></i></span><span>Basic Content</span></div>
         <div className='text-[1.3rem] text-white mb-4'><span className='text-[2rem] text-accent mr-[0.2rem]'><i class="ri-wifi-line"></i> </span><span>Premium Content</span></div>
-        <button className='btn'><Link to="/notes">View Notes</Link></button>
+        <Link to="/notes"><button className='btn'>View Notes</button></Link>
       </div>
       <div className='rightcontent absolute top-[60%] left-[58%] w-[42%] h-[15%] bg-accent rounded px-4 py-4 text-xl font-bold text-textPrimary'>Empowering minds through shared knowledge -- <br/> <span className='bg-secondry rounded-full p-2 text-primary mt-2 ml-[50%] block w-[45%]'>Your Notes , Our Platform</span></div>
     </div>

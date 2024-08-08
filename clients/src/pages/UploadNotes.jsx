@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 
 const UploadNotes = () => {
-  const [data, setData] = useState({ courseId: '', title: '', price: '' })
+  const [data, setData] = useState({ courseId: '', title: '', price: '' , preview:'' , view:''})
   const navigate = useNavigate();
   const axios = useAxios()
   const [courses, setCourses] = useState([])
@@ -32,14 +32,14 @@ const UploadNotes = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Main hun')
+    console.log(data)
     let result = await axios.post('/api/notes', data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
     })
     toast(result.data.msg);
-    console.log(result.data)
+    // console.log(result.data)
     navigate('/')
   }
 

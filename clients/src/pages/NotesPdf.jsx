@@ -38,7 +38,7 @@ const NotesPdf = () => {
                 <button className='h-[40px] w-[90px] text-[1.2rem] rounded bg-accent text-primary font-bold hover:cursor-pointer hover:shadow-none hover:scale-105 hover:bg-transparent hover:border-2 border-accent hover:text-accent'><a href={key.previewUrl} target='_blank'>Preview</a></button>
               </Tooltip>
               <button className='h-[40px] w-[90px] text-[1.2rem] rounded bg-accent text-primary font-bold hover:cursor-pointer hover:shadow-none hover:scale-105 hover:bg-transparent hover:border-2 border-accent hover:text-accent' >
-                {isLoggedIn ? (<a href={key.viewUrl}>Buy</a>) : (<button onClick={handleClick}>Buy</button>)}
+                {isLoggedIn ? (<a href={key.viewUrl} target='_blank'>Buy</a>) : (<button onClick={handleClick}>Buy</button>)}
               </button>
             </div>
           </div>

@@ -29,6 +29,7 @@ import Courses from './adminPanel/Courses.jsx';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NotesAudio from './pages/NotesAudio.jsx';
 
 let router = createBrowserRouter(
   createRoutesFromElements(
@@ -48,8 +49,9 @@ let router = createBrowserRouter(
         <Route path='' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/notes' element={<Notes />} />
-        <Route path='/notes-pdf' element={<NotesPdf />} />
+        <Route path='/notespdf' element={<NotesPdf />} />
         <Route path='/notestext' element={<NotesText />} />
+        <Route path='/notesaudio' element={<NotesAudio />} />
         {/* <Route path='/plans' element={<Plans />} /> */}
         <Route path='/contact' element={<Contact />} />
         <Route path='/register' element={<Register />} />

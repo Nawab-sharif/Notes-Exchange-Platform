@@ -13,7 +13,6 @@ exports.addNotes = async (req, res) => {
         }
 
         const isNotes = await Notes.findOne({ title })
-
         if (isNotes) {
             return res.status(400).json({ msg: 'Already exist!' });
         }
@@ -23,7 +22,6 @@ exports.addNotes = async (req, res) => {
         const obj = { title, course: courseId, user: userId, price, previewUrl: previewFileRes?.secure_url, viewUrl: viewFileRes?.secure_url }
         // console.log(obj)
         const notes = await Notes.create(obj);
-
         return res.status(201).json({ msg: 'Succesfully created!', notes })
 
     } catch (error) {
