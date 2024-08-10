@@ -27,6 +27,7 @@ body {
   --bgColor:#d0d2d6;
   --textPrimary:#1F2937;
   --textSecondry:#787b82bf;
+  
 }
 
 /* For Button CSS */
@@ -76,4 +77,17 @@ body {
   font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+
+/* CSS for child list of disability navbar section */
+
+.parent-list:hover{
+  .child-list{
+    display: block;
+  }
+}
+.child-list{
+  display: none;
+  z-index: 9999;
 }

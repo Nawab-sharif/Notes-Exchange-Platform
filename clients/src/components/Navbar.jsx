@@ -1,8 +1,9 @@
-import React from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useContext } from 'react';
+import { Accessibility, Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import noteslogo from '../assets/notes2.png'
 import { toast } from 'react-toastify';
+import UserContext from '../Context/UserContext';
 
 const menuItems = [
   { name: 'Home', href: '/', },
@@ -15,7 +16,9 @@ const menuItems = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const isLogin = localStorage.getItem('user-token');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const {setMode} = useContext(UserContext);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
@@ -41,10 +44,15 @@ export default function Navbar() {
     }
   }
 
+  function handleMe(value){
+    console.log(value)
+    setMode(value)
+  }
+
   // Set Active Menu 
   const location = useLocation();
-  const getLinkClass = (path) =>{
-    return location.pathname === path ? 'text-lg font-semibold  text-accent border-b-4 border-accent  rounded' : ' text-lg font-semibold rounded';
+  const getLinkClass = (path) => {
+    return location.pathname === path ? 'text-lg font-semibold  text-accent border-b-4 border-accent  rounded' : ' text-lg font-semibold  rounded';
   };
 
   return (
@@ -62,27 +70,36 @@ export default function Navbar() {
         <div className="hidden lg:block">
           <ul className="inline-flex space-x-8">
             {menuItems.map((item) => (
-              <li key={item.name}><Link to={item.href} className={getLinkClass(item.href)} 
-              // className=" text-lg font-semibold  hover:text-accent hover:border-b-4 border-accent  rounded"
-              >{item.name}</Link></li>
+              <li key={item.name}>
+                <Link to={item.href} className={getLinkClass(item.href)}>{item.name}</Link>
+              </li>
             ))}
+            <li className='parent-list mx-2 p-1'><Accessibility size={36} strokeWidth={2.75} absoluteStrokeWidth  className='hover:text-accent hover:border-b-4 border-accent'/>
+              <ul className='child-list absolute top-[60px] bg-white text-black p-2 text-[1.3rem] cursor-pointer'>
+                <li>A+</li>
+                <li>A</li>
+                <li>A-</li>
+                <li onClick={()=>handleMe(false)} className='bg-black text-white'>A</li>
+                <li>A</li>
+              </ul>
+            </li>
           </ul>
         </div>
 
         {/* Hire Me Button */}
         <div className="hidden lg:block">
-          <button type="button" onClick={handleUpload} className="text-primary bg-bgColor rounded-md mr-4 px-2 py-1 text-lg font-semibold shadow-sm hover:bg-[] hover:text-textPrimary hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Upload Notes</button>
+          <button type="button" onClick={handleUpload} className="text-white bg-accent rounded-md mr-4 px-2 py-1 text-lg font-semibold shadow-sm hover:text-primary hover:bg-white   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Upload Notes</button>
           {isLogin ?
             <>
-              <button type="button" onClick={handleLogout} className="text-primary bg-bgColor rounded-md mr-4 px-2 py-1 text-lg font-semibold shadow-sm hover:bg-[] hover:text-textPrimary hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Log Out</button>
+              <button type="button" onClick={handleLogout} className="text-primary bg-white rounded-md mr-4 px-2 py-1 text-lg font-semibold shadow-sm hover:bg-accent hover:text-white  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Log Out</button>
             </>
             :
             <>
               <Link to='/login'>
-                <button type="button" className="text-primary bg-bgColor rounded-md mr-4 px-2 py-1 text-lg font-semibold shadow-sm hover:bg-[] hover:text-textPrimary hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Log In</button>
+                <button type="button" className="text-primary bg-white rounded-md mr-4 px-2 py-1 text-lg font-semibold shadow-sm hover:bg-accent hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Log In</button>
               </Link>
               <Link to='/register'>
-                <button type="button" className="text-textPrimary bg-accent rounded-md ml-4 px-2 py-1 text-lg font-semibold shadow-sm hover:bg-white/100 hover:text-primary hover:bg-bgColor focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Register</button>
+                <button type="button" className="text-primary bg-white rounded-md ml-4 px-2 py-1 text-lg font-semibold shadow-sm hover:bg-accent hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">Register</button>
               </Link>
             </>
           }

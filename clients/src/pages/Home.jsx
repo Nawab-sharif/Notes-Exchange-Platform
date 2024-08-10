@@ -8,6 +8,7 @@ import CardSlider from '../components/CardSlider';
 
 const Home = () => {
   const gsapRef = useRef();
+  const gsapRef2 = useRef();
   useGSAP(()=>{
     gsap.from(gsapRef.current,{
       opacity:0,
@@ -15,7 +16,16 @@ const Home = () => {
       duration:2,
       // delay:1,
     })
+    gsap.from(gsapRef2.current,{
+      // opacity:0,
+      x:700,
+      duration:6,
+      repeat:-1,
+      yoyo:true
+    })
   })
+
+
   return (<>
     <div  className='home-page relative top-[3rem] h-screen max-w-screen bg-cover bg-fixed'>
       <div className="absolute h-full w-full bg-black opacity-40"></div>
@@ -27,6 +37,7 @@ const Home = () => {
         <div className='text-[1.3rem] text-white mb-4'><span className='text-[2rem] text-accent mr-[0.2rem]'><i class="ri-wifi-line"></i> </span><span>Premium Content</span></div>
         <Link to="/notes"><button className='btn'>View Notes</button></Link>
       </div>
+      <p ref={gsapRef2} className='absolute top-[40px] left-[20px] text-[1.3rem] text-black/80 font-bold my-[1%] bg-white/80 w-[50%] text-center p-2 pl-8 rounded-full'>This website follow the all rules and instructions for disabilities</p>
       <div className='rightcontent absolute top-[60%] left-[58%] w-[42%] h-[15%] bg-accent rounded px-4 py-4 text-xl font-bold text-textPrimary'>Empowering minds through shared knowledge -- <br/> <span className='bg-secondry rounded-full p-2 text-primary mt-2 ml-[50%] block w-[45%]'>Your Notes , Our Platform</span></div>
     </div>
     <hr className=" border-2 border-accent" />

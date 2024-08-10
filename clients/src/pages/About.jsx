@@ -5,7 +5,7 @@ import Work from '../components/Work'
 
 const About = () => {
   return (<>
-    <div className='about bg-bgColor h-[100vh] max-w-full flex items-center'>
+    <div className='about bg-bgColor dark:bg-black h-[100vh] max-w-full flex items-center'>
       <div className="left relative h-[100%] w-[60%]">
 
         <div className="content absolute top-[20%] left-[8%] text-textPrimary">
