@@ -44,7 +44,7 @@ const UploadNotes = () => {
   }
 
   return (
-    <div className='login h-[100vh] max-w-full bg-bgColor flex items-center justify-around'>
+    <div className='login h-[100vh] max-w-full bg-bgColor dark:bg-bgColor2 flex items-center justify-around'>
       <div className="form relative bg-secondry h-[70%] w-[30%] mt-[5%] ml-[5%] px-[2%] pt-[1%] pb-[5%] text-textPrimary rounded-[5%]">
         <form method='post' onSubmit={handleSubmit} className='h-full w-full flex flex-col justify-evenly pb-4'>
           <h1 className='text-2xl m-2 text-primary text-center font-bold w-[35%] border-b-4 border-accent rounded relative left-[30%]'>Add Notes</h1>

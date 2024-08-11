@@ -4,6 +4,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import noteslogo from '../assets/notes2.png'
 import { toast } from 'react-toastify';
 import UserContext from '../Context/UserContext';
+import { useTheme } from '../hook/useTheme';
+import { useFont } from '../hook/useFont';
 
 const menuItems = [
   { name: 'Home', href: '/', },
@@ -15,9 +17,10 @@ const menuItems = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { changeTheme } = useTheme()
+  const { changeFont } = useFont()
   const isLogin = localStorage.getItem('user-token');
   const navigate = useNavigate();
-  const {setMode} = useContext(UserContext);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -44,11 +47,6 @@ export default function Navbar() {
     }
   }
 
-  function handleMe(value){
-    console.log(value)
-    setMode(value)
-  }
-
   // Set Active Menu 
   const location = useLocation();
   const getLinkClass = (path) => {
@@ -61,7 +59,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="inline-flex items-center space-x-2">
           <span >
-            <img src={noteslogo} alt="logo" className='logo h-[60px] w-[65px]' />
+            <img src={noteslogo} alt="logo" className='logo h-[45px] w-[50px]' />
           </span>
           <Link to='/' className="title font-bold text-2xl hover:text-accent">Notes Exchange  Platform</Link>
         </div>
@@ -74,13 +72,13 @@ export default function Navbar() {
                 <Link to={item.href} className={getLinkClass(item.href)}>{item.name}</Link>
               </li>
             ))}
-            <li className='parent-list mx-2 p-1'><Accessibility size={36} strokeWidth={2.75} absoluteStrokeWidth  className='hover:text-accent hover:border-b-4 border-accent'/>
-              <ul className='child-list absolute top-[60px] bg-white text-black p-2 text-[1.3rem] cursor-pointer'>
-                <li>A+</li>
-                <li>A</li>
-                <li>A-</li>
-                <li onClick={()=>handleMe(false)} className='bg-black text-white'>A</li>
-                <li>A</li>
+            <li className='parent-list mx-2 p-1'><Accessibility size={36} strokeWidth={2.75} absoluteStrokeWidth className='hover:text-accent hover:border-b-4 border-accent' />
+              <ul className='child-list absolute top-[60px] bg-bgColor dark:bg-bgColor2 text-textPrimary dark:text-textPrimary2 p-2 text-[1.3rem] cursor-pointer'>
+                <li onClick={() => changeFont('fontPlus')}>A+</li>
+                <li onClick={() => changeFont('')}>A</li>
+                <li onClick={() => changeFont('fontMinus')}>A-</li>
+                <li onClick={() => changeTheme('dark')} className='bg-black text-white'>A</li>
+                <li onClick={() => changeTheme('light')} className='bg-white text-black'>A</li>
               </ul>
             </li>
           </ul>

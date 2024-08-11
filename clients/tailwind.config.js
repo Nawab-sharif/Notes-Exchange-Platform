@@ -1,9 +1,4 @@
-import { useContext, useState } from "react";
-import UserContext from "./src/Context/UserContext";
-
 const flowbite = require("flowbite-react/tailwind");
-
-let mode = true;
 
 export default {
   content: [
@@ -17,13 +12,16 @@ export default {
         primary: '#5b7fe2',
         secondry:'#b5d1f1b7',
         accent: '#FBBF24',
-        bgColor: mode ? '#d0d2d6' : '#1F2937' ,
-        textPrimary: mode ? '#1F2937' : '#d0d2d6',
+        bgColor: '#d0d2d6',
+        bgColor2:'#1F2937',
+        textPrimary:'#1F2937',
+        textPrimary2:'#d0d2d6',
         textSecondry:'#787b82bf',
       
       },
     },
   },
+  darkMode: 'class',
   plugins: [
     flowbite.plugin()
   ],

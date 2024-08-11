@@ -34,7 +34,7 @@ const Login = () => {
   }
 
   return (
-    <div className='login h-[100vh] max-w-full bg-bgColor flex items-center justify-around flex-wrap md:flex-col'>
+    <div className='login h-[100vh] max-w-full bg-bgColor dark:bg-bgColor2 flex items-center justify-around flex-wrap md:flex-col'>
       {/* Image Here */}
       <div className='h-[70%] w-[40%] mt-[5%]' >
         <img src="https://images.unsplash.com/photo-1630673245362-f69d2b93880e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="This is register image" className='h-[100%] w-[100%] rounded-[2%]' />

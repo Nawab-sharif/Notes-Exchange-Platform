@@ -22,6 +22,10 @@ const menuItems = [
         name: 'Contact',
         to: '/admin/contact',
     },
+    {
+        name: 'Feedbacks',
+        to: '/admin/feedback',
+    },
 
 ]
 

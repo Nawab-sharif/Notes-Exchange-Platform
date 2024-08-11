@@ -24,7 +24,7 @@ export function Navbar() {
     }
     return (
         <div className="relative w-full">
-            <div className="mx-auto flex max-w-7xl items-center justify-around mb-10 px-4 py-2 sm:px-6 lg:px-8 border-b-4 border-solid border-accent">
+            <div className="mx-auto flex max-w-4xl items-center justify-between mb-10 px-4 py-2 sm:px-6 lg:px-8 border-b-4 border-solid border-accent rounded-sm ">
                 <div className="hidden lg:block ">
                     <ul className="inline-flex space-x-20 cursor-pointer">
                         {menuItems.map((item) => (

@@ -28,7 +28,7 @@ const CardSlider = () => {
         },
     ]
     return (
-        <section className='w-full p-10 bg-bgColor '>
+        <section className='w-full p-10 bg-bgColor  dark:bg-bgColor2'>
             <div className="cards flex justify-around">
                 {
                     cardData.map((key) => {
@@ -37,7 +37,7 @@ const CardSlider = () => {
                             <img src={logo} alt="" className='h-[150px] w-[200px]' />
                             <h3 className='text-primary text-xl font-bold'>Rs. {key.price}</h3>
                             <div className="buttons w-full flex justify-evenly transition duration-[0.5] ease">
-                                <button className='h-[40px] w-[60%] text-[1.2rem] rounded bg-accent text-primary font-bold hover:cursor-pointer hover:shadow-none hover:scale-105 hover:bg-transparent hover:border-2 border-accent hover:text-accent'><Link to='/notes-pdf'>View more..</Link></button>
+                                <button className='h-[40px] w-[60%] text-[1.2rem] rounded bg-accent text-primary font-bold hover:cursor-pointer hover:shadow-none hover:scale-105 hover:bg-transparent hover:border-2 border-accent hover:text-accent'><Link to='/notespdf'>View more..</Link></button>
                             </div>
                         </div>
                     })

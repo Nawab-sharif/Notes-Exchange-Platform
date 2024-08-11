@@ -10,6 +10,15 @@
   font-family: Urbanist, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+
+/* Toggle font Size for add class in html tag */
+.fontPlus{
+  font-size: 1.1rem;
+}
+.fontMinus{
+  font-size: 0.9rem;
+}
+
 /*? base style */
 body {
   margin: 0;

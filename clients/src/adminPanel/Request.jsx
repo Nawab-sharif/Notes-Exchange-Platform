@@ -49,6 +49,7 @@ export default function Request() {
                                 <table className="min-w-full divide-y divide-gray-200">
                                     <thead className="bg-gray-50">
                                         <tr>
+                                            <th scope="col" className="px-12 py-3.5 text-left text-sm font-normal text-gray-700">User Name</th>
                                             <th scope="col" className="px-12 py-3.5 text-left text-sm font-normal text-gray-700">Course</th>
                                             <th scope="col" className="px-4 py-3.5 text-left text-sm font-normal text-gray-700">Title</th>
                                             <th scope="col" className="px-4 py-3.5 text-left text-sm font-normal text-gray-700">Price</th>
@@ -60,6 +61,9 @@ export default function Request() {
                                     <tbody className="divide-y divide-gray-200 bg-white">
                                         {data.map((notes) => (
                                             <tr>
+                                                <td className="whitespace-nowrap px-12 py-4">
+                                                    <div className="text-sm text-gray-900 ">{notes.user.name}</div>
+                                                </td>
                                                 <td className="whitespace-nowrap px-4 py-4">
                                                     <div className="flex items-center">
                                                         <div className="ml-4">

@@ -27,7 +27,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="contact relative bg-bgColor h-[100vh] max-w-[100%] flex flex-wrap pt-[10%] px-[5%]">
+    <div className="contact relative bg-bgColor  dark:bg-bgColor2 h-[100vh] max-w-[100%] flex flex-wrap pt-[10%] px-[5%]">
       <div className="left h-[90%] w-[45%]">
         <h3 className='w-[20%] px-4 text-lg font-bold border-b-4 border-accent rounded text-primary'>CONTACT</h3>
         <h1 className='my-[3%] p-2 w-[35%] text-center text-textPrimary text-[1.3rem]  bg-accent rounded-full'>Send your query</h1>

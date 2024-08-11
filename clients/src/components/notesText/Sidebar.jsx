@@ -15,14 +15,14 @@ export function Sidebar() {
     
   }
   return (
-    <aside className="flex w-60  flex-col overflow-y-auto bg-bgColor px-5 py-8 border-r-4 border-solid border-accent">
+    <aside className="flex w-60  flex-col overflow-y-auto bg-bgColor dark:bg-bgColor2 text-textPrimary dark:text-textPrimary2 px-5 py-2 border-r-4 border-solid border-accent">
       <div className="mt-2 flex flex-1 flex-col justify-between cursor-pointer">
         <nav className="-mx-3 space-y-6 ">
           <div className="space-y-3 ">
           <label className="px-3 text-sm font-bold uppercase text-primary">{index} Tutorial</label>
           {
             data[index].map((key)=>{
-                return <li className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-primary" onClick={()=>{handleClick(key)}}> <span className="mx-2 text-sm font-medium">{key}</span></li>
+                return <li className="flex transform items-center rounded-lg px-3 py-2  transition-colors duration-300 hover:bg-gray-100 hover:text-primary" onClick={()=>{handleClick(key)}}> <span className="mx-2 text-sm font-medium">{key}</span></li>
             })
           }
             

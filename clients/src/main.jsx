@@ -26,10 +26,10 @@ import AdminRequests from './adminPanel/Request.jsx';
 import AdminContextProvider from './Context/AdminContextProvider.jsx';
 import AddCourse from './adminPanel/AddCourse.jsx';
 import Courses from './adminPanel/Courses.jsx';
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NotesAudio from './pages/NotesAudio.jsx';
+import FeedbacksTable from './adminPanel/FeedbackTable.jsx';
 
 let router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +43,7 @@ let router = createBrowserRouter(
         <Route path='/admin/requests' element={<AdminRequests />} />
         <Route path='/admin/addcourse' element={<AddCourse />} />
         <Route path='/admin/courses' element={<Courses />} />
+        <Route path='/admin/feedback' element={<FeedbacksTable />} />
       </Route>
 
       <Route path='/' element={<Layout />}>

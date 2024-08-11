@@ -18,7 +18,7 @@ const Notes = () => {
   }, [])
 
   return (
-    <div className='notes relative h-auto w-full py-[8%] px-[2%] bg-bgcolor flex items-center justify-evenly gap-[4%] flex-wrap'>
+    <div className='notes relative h-auto w-full py-[8%] px-[2%] bg-bgcolor  dark:bg-bgColor2 flex items-center justify-evenly gap-[4%] flex-wrap'>
       {
         data.map((key) => {
           return <div className='notesCard h-[180px] w-[300px] flex items-center justify-evenly pr-4 mb-[2%] bg-secondry rounded-[5%] hover:shadow-none hover:scale-105'>
