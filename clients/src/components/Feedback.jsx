@@ -3,23 +3,25 @@ import { SendHorizontal } from 'lucide-react'
 import { useAxios } from '../hook/useAxios';
 import { toast } from 'react-toastify';
 
-export default function Feedback({id}) {
+export default function Feedback({id = '66b7a4f41f2553b95120c315'}) {
     const axios = useAxios();
-    const [feedback, setFeedback] = useState({ notesId: '', feedback: '' })
+    const [feedback, setFeedback] = useState({ notesId: '', feedback: '' });
 
     // Feedback Send API call
     async function handleSend(id) {
         // console.log(id)
         setFeedback(()=>{ feedback, feedback.notesId = id })
+        // console.log(feedback)
         const result = await axios.post('/api/feedback', feedback)
-        // console.log(result)
         toast.success(result.data.msg);
+        setFeedback({feedback:''})
     }
     return (
         <div className="flex w-[250px] gap-2 items-center">
             <input className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 type="text"
                 name='feedback'
+                value={feedback?.feedback}
                 required
                 onChange={(e) => { setFeedback({ ...feedback, feedback: e.target.value }) }}
                 placeholder="Type Feedback"

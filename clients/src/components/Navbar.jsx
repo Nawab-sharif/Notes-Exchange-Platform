@@ -6,11 +6,12 @@ import { toast } from 'react-toastify';
 import UserContext from '../Context/UserContext';
 import { useTheme } from '../hook/useTheme';
 import { useFont } from '../hook/useFont';
+import { Tooltip } from "flowbite-react";
 
 const menuItems = [
   { name: 'Home', href: '/', },
   { name: 'About', href: '/about' },
-  { name: 'Notes', href: '/notes', },
+  { name: 'Course', href: '/course', },
   // {name: 'Plans',href: '/plans',},
   { name: 'Contact', href: '/contact', },
 ]
@@ -74,11 +75,11 @@ export default function Navbar() {
             ))}
             <li className='parent-list mx-2 p-1'><Accessibility size={36} strokeWidth={2.75} absoluteStrokeWidth className='hover:text-accent hover:border-b-4 border-accent' />
               <ul className='child-list absolute top-[60px] bg-bgColor dark:bg-bgColor2 text-textPrimary dark:text-textPrimary2 p-2 text-[1.3rem] cursor-pointer'>
-                <li onClick={() => changeFont('fontPlus')}>A+</li>
-                <li onClick={() => changeFont('')}>A</li>
-                <li onClick={() => changeFont('fontMinus')}>A-</li>
-                <li onClick={() => changeTheme('dark')} className='bg-black text-white'>A</li>
-                <li onClick={() => changeTheme('light')} className='bg-white text-black'>A</li>
+                <Tooltip content='Increase Font'><li onClick={() => changeFont('fontPlus')}>A+</li></Tooltip>
+                <Tooltip content='Normal Font/Theme'><li onClick={() => changeFont('')}>A</li></Tooltip>
+                <Tooltip content='Decrease Font'><li onClick={() => changeFont('fontMinus')}>A-</li></Tooltip>
+                <Tooltip content='Dark Theme'><li onClick={() => changeTheme('dark')} className='bg-black text-white px-2'>A</li></Tooltip>
+                <Tooltip content='Light Theme'><li onClick={() => changeTheme('light')} className='bg-white text-black px-2'>A</li></Tooltip>
               </ul>
             </li>
           </ul>

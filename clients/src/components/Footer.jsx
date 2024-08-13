@@ -43,7 +43,7 @@ export default function Footer() {
                         <ul className="flex flex-col space-y-4 text-[14px] font-medium text-gray-300">
                             <li className='hover:text-accent'><a href="/"><i class="ri-arrow-right-s-fill"></i>Home</a></li>
                             <li className='hover:text-accent'><a href="/about"><i class="ri-arrow-right-s-fill"></i>About</a></li>
-                            <li className='hover:text-accent'><a href="/notes"><i class="ri-arrow-right-s-fill"></i>Notes</a></li>
+                            <li className='hover:text-accent'><a href="/course"><i class="ri-arrow-right-s-fill"></i>Course</a></li>
                             <li className='hover:text-accent'><a href="/plans"><i class="ri-arrow-right-s-fill"></i>Plans</a></li>
                             <li className='hover:text-accent'><a href="/contact"><i class="ri-arrow-right-s-fill"></i>Contact</a></li>
                         </ul>

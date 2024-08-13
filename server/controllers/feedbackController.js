@@ -4,10 +4,10 @@ exports.saveFeedback = async (req, res) => {
     try {
         const { notesId, feedback } = req.body;
         const userId = req.user;
-        console.log(notesId)
+        // console.log(notesId)
         // return console.log(feedback,userId);
         if (!notesId || !feedback) {
-            return res.status(400).json({ msg: 'Some required field are missing.' });
+            return res.status(200).json({ msg: 'Some required field are missing.' });
         }
         await Feedback.create({ user: userId, notes: notesId, feedback });
         return res.status(200).json({ msg: "Feedback send successfully" })
